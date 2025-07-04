@@ -17,7 +17,7 @@ export default function LoginPage() {
     if (isAdmin) {
       alert('Welcome, Admin!');
       localStorage.setItem('role', 'admin'); // optional
-      router.push('/admin/dashboard');
+      router.push('../../admin');
       return;
     }
 
@@ -27,7 +27,7 @@ export default function LoginPage() {
     if (isUser) {
       alert('Login successful!');
       localStorage.setItem('role', 'user'); // optional
-      router.push('/movies');
+      router.push('../../client');
     } else {
       alert('Invalid email or password.');
     }
