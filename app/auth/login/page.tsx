@@ -11,12 +11,23 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const storedUser = localStorage.getItem('fakeUser');
-    const parsedUser = storedUser ? JSON.parse(storedUser) : null;
+    // Static dummy admin login
+    const isAdmin = email === 'admin@gmail.com' && password === '2345';
 
-    if (parsedUser?.email === email && parsedUser?.password === password) {
+    if (isAdmin) {
+      alert('Welcome, Admin!');
+      localStorage.setItem('role', 'admin'); // optional
+      router.push('/admin/dashboard');
+      return;
+    }
+
+    // Static dummy normal user login
+    const isUser = email === 'user@gmail.com' && password === '123456';
+
+    if (isUser) {
       alert('Login successful!');
-      router.push('/movies'); // Redirect after login
+      localStorage.setItem('role', 'user'); // optional
+      router.push('/movies');
     } else {
       alert('Invalid email or password.');
     }
@@ -53,7 +64,7 @@ export default function LoginPage() {
         </button>
         <p className="text-center text-sm mt-2">
           Don't have an account?{' '}
-          <a href="../register/page.tsx" className="text-blue-400 hover:underline">
+          <a href="/auth/registration" className="text-blue-400 hover:underline">
             Register
           </a>
         </p>
