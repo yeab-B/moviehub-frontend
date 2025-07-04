@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+import { useState } from "react";
+
 export default function ClientPages() {
   const router = useRouter();
+  const [selectedGenre, setSelectedGenre] = useState('All');
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start text-white bg-gradient-to-b from-[#020730] to-[#a287e7] w-full h-full relative">
@@ -67,6 +70,25 @@ export default function ClientPages() {
         </h1>
       </div>
 
+<div className="w-full px-6 sm:px-14 mt-16">
+  {/* Genre Filter Buttons */}
+  <div className="flex flex-wrap justify-center gap-3 mb-6">
+    {['All', 'Action', 'Comedy', 'Drama', 'Horror', 'Romance'].map((genre) => (
+      <button
+        key={genre}
+        onClick={() => setSelectedGenre(genre)}
+        className={`px-4 py-1 rounded-full text-sm font-medium transition ${
+          selectedGenre === genre
+            ? 'bg-white text-black shadow'
+            : 'bg-white/20 text-white border border-white/30 hover:bg-white/30'
+        }`}
+      >
+        {genre}
+      </button>
+    ))}
+  </div>
+</div>
+
       {/* Trending Movies Section */}
       <section className="w-full px-8 mt-16">
         <h2 className="text-3xl font-bold mb-4 text-white ml-14 ">Trending Now</h2>
@@ -88,9 +110,11 @@ export default function ClientPages() {
         </div>
       </section>
 
+
+
       {/* Popular Movies Grid */}
       <section className="w-full px-4 sm:px-8 mt-12 mb-20">
-        <h2 className="text-3xl font-bold mb-4 text-white ml-14">Popular Movies</h2>
+        <h2 className="text-3xl font-bold mb-4 text-white ml-34 ">Popular Movies</h2>
         <div className="pb-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {[...Array(10)].map((_, index) => (
