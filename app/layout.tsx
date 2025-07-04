@@ -1,7 +1,9 @@
 // src/app/layout.tsx
 import './globals.css';
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
   title: 'CineView',
   description: 'Simple movie app with dashboard',
 };
