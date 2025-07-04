@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import NavButton from '../../components/ui/Button';
 
-export default function Home() {
+export default function ClientPages() {
   const router = useRouter();
 
   return (
@@ -58,25 +58,26 @@ export default function Home() {
       <section className="w-full px-4 sm:px-8 mt-12 mb-20">
   <h2 className="text-2xl font-bold mb-4 text-white">Popular Movies</h2>
 
-  {/* MOBILE: flex scroll | DESKTOP: grid */}
-  <div className="overflow-x-auto pb-4 scrollbar-hide">
-    <div className="flex space-x-4 w-max lg:grid lg:grid-cols-4 lg:gap-6 lg:space-x-0 lg:w-full">
-      {[...Array(10)].map((_, index) => (
-        <div
-          key={index}
-          className="min-w-[180px] flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md"
-        >
-          <Image
-            src="/movie-poster.png"
-            alt={`Popular Movie ${index + 1}`}
-            width={180}
-            height={270}
-            className="w-full h-auto object-cover"
-          />
-        </div>
-      ))}
-    </div>
+<div className="pb-4 px-4 sm:px-8">
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    {[...Array(10)].map((_, index) => (
+      <div
+        key={index}
+        className="bg-white rounded-lg overflow-hidden shadow-md"
+      >
+        <Image
+          src="/movie-poster.png"
+          alt={`Popular Movie ${index + 1}`}
+          width={180}
+          height={270}
+          className="w-full h-auto object-cover"
+        />
+      </div>
+    ))}
   </div>
+</div>
+
+  
 </section>
 
     </main>
