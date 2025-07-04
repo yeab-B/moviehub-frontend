@@ -1,4 +1,4 @@
-'use client'; // Needed for interactivity
+'use client';
 
 import React, { ReactNode, MouseEventHandler } from 'react';
 
@@ -19,7 +19,20 @@ export default function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`px-4 py-2 rounded font-semibold transition bg-blue-600 text-white hover:bg-blue-700 ${className}`}
+      className={` 
+        px-8 py-4               // Bigger size
+        text-xl font-semibold
+        bg-purple-600           // Tailwind purple
+        text-white
+        rounded-xl
+        hover:bg-purple-700     // Darker on hover
+        hover:shadow-xl
+        hover:scale-105
+        active:scale-100
+        transition-all duration-300 ease-in-out
+        shadow-md
+        ${className}
+      `}
     >
       {children}
     </button>
