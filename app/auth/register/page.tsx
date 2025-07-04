@@ -13,7 +13,7 @@ export default function RegisterPage() {
     // Save fake user in localStorage
     localStorage.setItem('fakeUser', JSON.stringify({ email, password }));
     alert('Registration successful! You can now login.');
-    router.push('/login');
+    router.push('./login');
   };
 
   return (
@@ -47,7 +47,7 @@ export default function RegisterPage() {
         </button>
         <p className="text-center text-sm mt-2">
           Already have an account?{' '}
-          <a href="/login" className="text-blue-400 hover:underline">
+          <a href="../login" className="text-blue-400 hover:underline">
             Login
           </a>
         </p>
