@@ -20,11 +20,11 @@ export default function Button({
       type={type}
       onClick={onClick}
       className={`
-        px-8 py-4
-        text-xl font-semibold
+        px-4 py-4
+        text-sm font-semibold
         bg-purple-600
         text-white
-        rounded-xl
+        rounded-2xl
         hover:bg-purple-700
         hover:shadow-xl
         hover:scale-105
