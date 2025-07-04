@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+* **Client side**: landing page, login, register, movie list, movie watch page, profile, notifications
+* **Admin side**: dashboard with sidebar containing movies, settings, and movie creation (CRUD via static data for now)
 
-First, run the development server:
+---
+
+
+
+
+## 🗂️ Professional Folder Structure (Next.js 13+ with App Router)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+app/
+│
+├── (auth)/                      # Group auth-related routes
+│   ├── login/                   # /login page
+│   └── register/                # /register page
+│
+├── (client)/                   # Group public-facing routes
+│   ├── page.tsx                # Landing Page (/)
+│   ├── movies/                 # /movies (list)
+│   │   └── [id]/               # Dynamic route for watching movie
+│   ├── profile/                # /profile
+│   └── notifications/          # /notifications
+│
+├── (admin)/                    # Admin section
+│   ├── layout.tsx              # Shared layout with sidebar
+│   ├── dashboard/              # /admin/dashboard
+│   ├── movies/                 # /admin/movies
+│   │   ├── new/                # /admin/movies/new (add movie)
+│   │   └── [id]/edit/          # /admin/movies/[id]/edit (edit movie)
+│   └── settings/               # /admin/settings
+│
+├── layout.tsx                  # Root layout (includes global styles)
+├── globals.css
+└── page.tsx                    # Redirect to /landing or home
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Supporting Folders
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+components/                     # Reusable UI components
+│   ├── ui/                     # Buttons, Inputs, Modals, etc.
+│   ├── movies/                 # MovieCard, MovieList, etc.
+│   └── layout/                 # Navbar, Sidebar, Footer
 
-## Learn More
+lib/                            # Utility functions
+│   └── auth.ts                 # Auth helper functions (dummy or future-ready)
 
-To learn more about Next.js, take a look at the following resources:
+data/                           # Static JSON or JS data (fake DB)
+│   └── movies.ts               # List of movie objects
+│   └── users.ts                # Dummy user data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+types/                          # TypeScript interfaces
+│   └── movie.ts
+│   └── user.ts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+context/                        # React Context (Auth, Theme, etc.)
 
-## Deploy on Vercel
+hooks/                          # Custom React hooks
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+constants/                      # Constants like routes, roles, etc.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+public/                         # Static assets like images, icons
+
+styles/                         # Component or layout-specific styles
+```
+
+---
+
+## 📦 Sample Static Movie Object (data/movies.ts)
+
+```ts
+export const movies = [
+  {
+    id: '1',
+    title: 'Inception',
+    description: 'A thief steals corporate secrets through dream-sharing.',
+    coverImage: '/images/inception.jpg',
+    videoUrl: '/videos/inception.mp4',
+    category: 'Sci-Fi',
+    year: 2010,
+    rating: 8.8
+  },
+  ...
+];
+```
+
+---
+
+## 🧩 Components to Build Reusably
+
+| Component         | Location            | Use Case                |
+| ----------------- | ------------------- | ----------------------- |
+| `MovieCard`       | `components/movies` | Display in list         |
+| `Sidebar`         | `components/layout` | Admin navigation        |
+| `Navbar`          | `components/layout` | Header for client pages |
+| `AuthForm`        | `components/auth`   | Login/Register form     |
+| `NotificationBox` | `components/ui`     | Show notifications      |
+| `MovieForm`       | `components/admin`  | Create/Edit form        |
+
+---
+
+## 🔒 Authentication (Dummy)
+
+* Store dummy auth state in Context or `localStorage`
+* You can make a simple `AuthProvider` to manage login state
+
+---
+
+## 🔄 Next Steps
+
+1. **Start with `app/(client)/`**
+2. Build reusable components in `components/`
+3. Add fake static data in `data/`
+4. Structure admin section inside `app/(admin)/`
+5. Later you can add API routes if needed (`app/api/`)
+
+---
+
