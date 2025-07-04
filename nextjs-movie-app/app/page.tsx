@@ -8,7 +8,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start text-white bg-gradient-to-b from-[#D6C7AF] to-[#AB8BFF] w-full h-full relative">
+    <main className="min-h-screen flex flex-col items-center justify-start text-white bg-gradient-to-b from-[#020730] to-[#a287e7] w-full h-full relative">
       
       {/* Top nav buttons */}
       <div className="w-full p-4 flex justify-end space-x-4 absolute top-0 right-0 z-10">
