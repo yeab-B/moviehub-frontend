@@ -1,10 +1,10 @@
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <main
-      className="min-h-screen flex flex-col items-center justify-center text-white bg-gradient-to-b from-[#AB8BFF] to-[#D6C7F]"
-    >
+    <main>
       <Image
         src="/movie-poster.png"
         alt="Movie Poster"
@@ -18,6 +18,20 @@ export default function Home() {
         </span>{" "}
         You’ll Love Without the Hassle
       </h1>
+      <div className="space-x-4 mt-8">
+        <button
+          onClick={() => router.push("/login")}
+          className="px-6 py-3 bg-blue-600 rounded hover:bg-blue-700"
+        >
+          Login
+        </button>
+        <button
+          onClick={() => router.push("/register")}
+          className="px-6 py-3 bg-green-600 rounded hover:bg-green-700"
+        >
+          Register
+        </button>
+      </div>
     </main>
   );
 }
