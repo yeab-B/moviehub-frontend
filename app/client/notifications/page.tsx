@@ -1,44 +1,44 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
+import { X } from 'lucide-react';
 
-export default function NotificationsPage() {
-  const router = useRouter();
-  // Demo notifications
+interface NotificationPanelProps {
+  onClose: () => void;
+}
+
+export default function NotificationPanel({ onClose }: NotificationPanelProps) {
   const notifications = [
-    {
-      id: 1,
-      message: "Your profile was updated successfully.",
-      time: "2 min ago",
-    },
-    { id: 2, message: "New movie added to Trending.", time: "10 min ago" },
-    { id: 3, message: "Password changed.", time: "1 hour ago" },
+    { id: 1, message: 'Your profile was updated successfully.', time: '2 min ago' },
+    { id: 2, message: 'New movie added to Trending.', time: '10 min ago' },
+    { id: 3, message: 'Password changed.', time: '1 hour ago' },
   ];
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-b from-purple-900 to-purple-300 w-full h-full pt-20">
-      <div className="w-full max-w-md bg-white bg-opacity-90 rounded-lg shadow-lg p-8 mt-4">
-        <h2 className="text-2xl font-bold mb-6 text-purple-900 text-center">
-          Notifications
-        </h2>
-        <ul className="space-y-4">
-          {notifications.length === 0 ? (
-            <li className="text-gray-500 text-center">No notifications.</li>
-          ) : (
-            notifications.map((n) => (
-              <li
-                key={n.id}
-                className="bg-purple-100 rounded p-4 shadow flex flex-col"
-              >
-                <span className="text-gray-800">{n.message}</span>
-                <span className="text-xs text-gray-500 mt-1 self-end">
-                  {n.time}
-                </span>
-              </li>
-            ))
-          )}
-        </ul>
-      </div>
-    </main>
+    <div className="fixed top-20 right-6 w-80 bg-white rounded-lg shadow-lg p-6 z-[9999] border border-gray-300">
+      <button
+        onClick={onClose}
+        className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 transition"
+        aria-label="Close Notifications"
+      >
+        <X className="w-5 h-5" />
+      </button>
+
+      <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">Notifications</h2>
+      <ul className="space-y-3 max-h-80 overflow-y-auto">
+        {notifications.length === 0 ? (
+          <li className="text-gray-500 text-center">No notifications.</li>
+        ) : (
+          notifications.map((n) => (
+            <li
+              key={n.id}
+              className="bg-purple-100 rounded p-3 shadow-sm text-sm"
+            >
+              <p className="text-gray-800">{n.message}</p>
+              <p className="text-xs text-gray-500 text-right mt-1">{n.time}</p>
+            </li>
+          ))
+        )}
+      </ul>
+    </div>
   );
 }
