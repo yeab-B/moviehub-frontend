@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Button from '../components/ui/Button';
 
 export default function Home() {
   const router = useRouter();
@@ -11,18 +12,10 @@ export default function Home() {
       
       {/* Top nav buttons */}
       <div className="w-full p-4 flex justify-end space-x-4 absolute top-0 right-0 z-10">
-        <button
-          onClick={() => router.push('/login')}
-          className="px-4 py-2 bg-white text-[#AB8BFF] font-semibold rounded hover:bg-gray-100"
-        >
-          Login
-        </button>
-        <button
-          onClick={() => router.push('/register')}
-          className="px-4 py-2 bg-[#AB8BFF] text-white font-semibold rounded hover:bg-purple-700"
-        >
+        <Button onClick={() => router.push('/login')}>Login</Button>
+        <Button onClick={() => router.push('/register')} className="bg-green-600 hover:bg-green-700">
           Register
-        </button>
+        </Button>
       </div>
 
       {/* Main content */}
