@@ -19,13 +19,13 @@ export default function Button({
     <button
       type={type}
       onClick={onClick}
-      className={` 
-        px-8 py-4               // Bigger size
+      className={`
+        px-8 py-4
         text-xl font-semibold
-        bg-purple-600           // Tailwind purple
+        bg-purple-600
         text-white
         rounded-xl
-        hover:bg-purple-700     // Darker on hover
+        hover:bg-purple-700
         hover:shadow-xl
         hover:scale-105
         active:scale-100
