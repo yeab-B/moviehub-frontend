@@ -14,14 +14,14 @@ export default function ClientHeader() {
       </div>
       <div className="flex gap-3">
         <button
-          onClick={() => router.push('/notifications')}
+          onClick={() => router.push('client/notifications')}
           className="bg-white text-black p-2 rounded-full hover:bg-gray-200 transition"
           title="Notifications"
         >
           <Bell className="w-5 h-5" />
         </button>
         <button
-          onClick={() => router.push('/profile')}
+          onClick={() => router.push('/client/profile')}
           className="bg-white text-black p-2 rounded-full hover:bg-gray-200 transition"
           title="Profile"
         >
