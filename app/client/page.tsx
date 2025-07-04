@@ -149,26 +149,31 @@ export default function ClientHomePage() {
         </div>
       </div>
 
-      {/* Trending Movies */}
-      <section className="w-full px-8 mt-16">
-        <h2 className="text-3xl font-bold mb-4 text-white ml-14">Trending Now</h2>
-        <div className="flex space-x-4 overflow-x-auto scrollbar-hide pb-4">
-          {[...Array(10)].map((_, index) => (
-            <div
-              key={index}
-              className="min-w-[200px] flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md"
-            >
-              <Image
-                src="/movie-poster.png"
-                alt={`Movie ${index + 1}`}
-                width={200}
-                height={300}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+  <section className="w-full px-8 mt-16 overflow-hidden">
+  <h2 className="text-3xl font-bold mb-4 text-white ml-14">Trending Now</h2>
+  <div className="relative">
+    <div className="flex space-x-4 scroll-horizontal w-max">
+      {/* Duplicate the movies twice for smooth loop */}
+      {[...Array(10)].map((_, index) => (
+       <div
+  key={`first-${index}`}
+  className="min-w-[200px] flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md relative transition-transform duration-300 hover:scale-150 hover:z-20"
+>
+  <Image
+    src="/movie-poster.png"
+    alt={`Movie ${index + 1}`}
+    width={200}
+    height={300}
+    className="w-full h-auto object-cover"
+  />
+</div>
+
+      ))}
+   
+    </div>
+  </div>
+</section>
+
 
       {/* Popular Movies */}
       <section className="w-full px-4 sm:px-8 mt-12 mb-20">
