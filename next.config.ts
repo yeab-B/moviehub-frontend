@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   /** @type {import('next').NextConfig} */
 
   images: {
-    domains: ['m.media-amazon.com'],
+    // domains: ['m.media-amazon.com'],
+    domains: ['m.media-amazon.com', 'your-domain.com'], 
   },
 };
 
