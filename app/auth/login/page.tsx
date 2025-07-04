@@ -53,7 +53,7 @@ export default function LoginPage() {
         </button>
         <p className="text-center text-sm mt-2">
           Don't have an account?{' '}
-          <a href="/register" className="text-blue-400 hover:underline">
+          <a href="../register/page.tsx" className="text-blue-400 hover:underline">
             Register
           </a>
         </p>

@@ -12,8 +12,8 @@ export default function Home() {
       
       {/* Top nav buttons */}
       <div className="w-full p-4 flex justify-end space-x-4 absolute top-0 right-0 z-10">
-        <NavButton onClick={() => router.push('/login')}>Login</NavButton>
-        <NavButton onClick={() => router.push('/register')} className="bg-green-600 hover:bg-green-700">
+        <NavButton onClick={() => router.push('/auth/login')}>Login</NavButton>
+        <NavButton onClick={() => router.push('/auth/register')} className="bg-green-600 hover:bg-green-700">
           Register
         </NavButton>
       </div>
