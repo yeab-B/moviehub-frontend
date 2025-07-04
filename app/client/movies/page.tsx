@@ -141,7 +141,6 @@ export default function MoviesSection() {
         </div>
       </div>
 
-      {/* Trending Now (Top 5) */}
       <section className="w-full px-8 mt-16 overflow-hidden">
         <h2 className="text-3xl font-bold mb-4 text-white ml-14">
           Trending Now
@@ -162,7 +161,7 @@ export default function MoviesSection() {
                 />
               </div>
             ))}
-            {/* Duplicate for infinite loop effect */}
+          
             {filteredMovies.slice(0, 10).map((movie) => (
               <div
                 key={`loop-${movie.id}`}
