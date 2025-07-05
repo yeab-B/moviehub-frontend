@@ -2,15 +2,14 @@
 
 import Image from "next/image";
 import { X } from "lucide-react";
+import { profile } from "../../../data/profile"; 
 
 interface ProfilePanelProps {
   onClose: () => void;
 }
 
 export default function ProfilePanel({ onClose }: ProfilePanelProps) {
-  const name = "John Doe";
-  const email = "john@example.com";
-  const imageUrl = "/movie-poster.png";
+  const { name, email, imageUrl } = profile;
 
   return (
     <div className="fixed top-20 right-6 w-80 bg-white rounded-lg shadow-lg p-6 z-[9999] border border-gray-300">
