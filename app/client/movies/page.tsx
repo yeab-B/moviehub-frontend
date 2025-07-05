@@ -2,16 +2,22 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";  // import useRouter
 import MovieCard from "../../../components/movieCard/page"; // Adjust if needed
 import { movies } from "../../../data/movies"; // ✅ Import from external file
 
 export default function MoviesSection() {
   const [selectedGenre, setSelectedGenre] = useState("All");
+  const router = useRouter();  // initialize router
 
   const filteredMovies =
     selectedGenre === "All"
       ? movies
       : movies.filter((m) => m.category === selectedGenre);
+
+  const handleMoreOptions = () => {
+    router.push('client/dashboard');  // adjust path if needed
+  };
 
   return (
     <>
@@ -106,6 +112,16 @@ export default function MoviesSection() {
           {filteredMovies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
+        </div>
+
+        {/* More Options Button */}
+        <div className="flex justify-end mt-6">
+          <button
+            onClick={handleMoreOptions}
+            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-md text-white font-semibold transition"
+          >
+            More Options
+          </button>
         </div>
       </section>
     </>
