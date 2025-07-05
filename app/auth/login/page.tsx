@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { users } from '../../../data/auth';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -10,22 +11,22 @@ export default function LoginPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-   const isAdmin = email === 'admin@gmail.com' && password === '2345';
 
-    if (isAdmin) {
-      alert('Welcome, Admin!');
-      localStorage.setItem('role', 'admin'); // optional
-      router.push('../../admin');
-      return;
-    }
+    const matchedUser = users.find(
+      (user) => user.email === email && user.password === password
+    );
 
-    // Static dummy normal user login
-    const isUser = email === 'user@gmail.com' && password === '123456';
+    if (matchedUser) {
+      alert(`Welcome, ${matchedUser.role}!`);
+      localStorage.setItem('role', matchedUser.role);
 
-    if (isUser) {
-      alert('Login successful!');
-      localStorage.setItem('role', 'user'); // optional
-      router.push('../../client');
+      if (matchedUser.role === 'admin') {
+        router.push('../../admin');
+      } else if (matchedUser.role === 'user') {
+        router.push('../../client');
+      } else {
+        router.push('/');
+      }
     } else {
       alert('Invalid email or password.');
     }
