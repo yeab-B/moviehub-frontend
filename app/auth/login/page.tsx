@@ -10,9 +10,7 @@ export default function LoginPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Static dummy admin login
-    const isAdmin = email === 'admin@gmail.com' && password === '2345';
+   const isAdmin = email === 'admin@gmail.com' && password === '2345';
 
     if (isAdmin) {
       alert('Welcome, Admin!');
@@ -64,7 +62,7 @@ export default function LoginPage() {
         </button>
         <p className="text-center text-sm mt-2">
           Don't have an account?{' '}
-          <a href="/auth/registration" className="text-blue-400 hover:underline">
+          <a href="/auth/register" className="text-blue-400 hover:underline">
             Register
           </a>
         </p>
