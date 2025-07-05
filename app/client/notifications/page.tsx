@@ -1,17 +1,13 @@
 'use client';
 
 import { X } from 'lucide-react';
+import { notifications } from '../../../data/notification'; // adjust path accordingly
 
 interface NotificationPanelProps {
   onClose: () => void;
 }
 
 export default function NotificationPanel({ onClose }: NotificationPanelProps) {
-  const notifications = [
-    { id: 1, message: 'Your profile was updated successfully.', time: '2 min ago' },
-    { id: 2, message: 'New movie added to Trending.', time: '10 min ago' },
-    { id: 3, message: 'Password changed.', time: '1 hour ago' },
-  ];
 
   return (
     <div className="fixed top-20 right-6 w-80 bg-white rounded-lg shadow-lg p-6 z-[9999] border border-gray-300">
