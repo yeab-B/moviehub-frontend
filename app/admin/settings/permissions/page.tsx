@@ -20,7 +20,7 @@ export default function PermissionListPage() {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Permission Management</h1>
         <Link
-          href="/settings/permissions/new"
+          href="/admin/settings/permissions/new"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
         >
           + Add Permission
@@ -42,7 +42,7 @@ export default function PermissionListPage() {
               <td className="p-3 text-white">{permission.description}</td>
               <td className="p-3 space-x-2">
                 <Link
-                  href={`/settings/permissions/${permission.id}/edit`}
+                  href={`/admin/settings/permissions/${permission.id}/edit`}
                   className="text-blue-400 hover:underline"
                 >
                   Edit
