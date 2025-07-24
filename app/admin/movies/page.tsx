@@ -28,9 +28,9 @@ export default function MovieListPage() {
         </Link>
       </div>
 
-      <table className="w-full table-auto border-collapse bg-white shadow-sm rounded">
+      <table className="w-full table-auto border-collapse bg-gray-600 shadow-sm rounded">
         <thead>
-          <tr className="bg-gray-200 text-left">
+          <tr className="bg-gray-800 text-left">
             <th className="p-3">Title</th>
             <th className="p-3">Category</th>
             <th className="p-3">Rating</th>
