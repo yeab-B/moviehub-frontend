@@ -22,7 +22,7 @@ export default function EditRolesPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Updated role:', form);
-    router.push('/settings/roles');
+    router.push('/admin/settings/roles');
   };
 
   return (
@@ -44,7 +44,13 @@ export default function EditRolesPage() {
         className="w-full px-4 py-2 border rounded"
         placeholder="Permission"
       />
-
+<button
+          type="button"
+          onClick={() => router.back()}
+          className="bg-gray-300 text-black px-6 py-2 rounded hover:bg-gray-400"
+        >
+          Back
+        </button>
       <button
         type="submit"
         className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
