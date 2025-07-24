@@ -10,5 +10,5 @@ export default function AdminHome() {
     router.replace('/admin/dashboard');
   }, [router]);
 
-  return null; // Optional: Show a loading spinner if you want
+  return null; 
 }
