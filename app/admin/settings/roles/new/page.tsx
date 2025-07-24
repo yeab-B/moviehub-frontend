@@ -1,63 +1,53 @@
-// app/admin/movies/page.tsx
 'use client';
 
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { permission } from 'process';
 import { useState } from 'react';
-import { roles } from '../../../../../data/roles'; // assume this is your source
 
-export default function RoleListPage() {
-  const [roleList, setRoleList] = useState(roles);
+export default function AddRolesPage() {
+  const router = useRouter();
+  const [form, setForm] = useState({ title: '', permission: '' });
 
-  const handleDelete = (id: string) => {
-    const confirmed = confirm('Are you sure you want to delete this role?');
-    if (confirmed) {
-      setRoleList((prev) => prev.filter((perm) => perm.id !== id));
-      // You would also send DELETE request to API here
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // System assigns rating later
+    const roleWithDefaultPermission = { ...form, permission: 'read' }; // or null
+    console.log('New role:', roleWithDefaultPermission);
+    router.push('/admin/settings/roles');
   };
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Role Management</h1>
-        <Link
-          href="/admin/settings/roles/new"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    <form onSubmit={handleSubmit} className="max-w-xl space-y-4">
+      <h1 className="text-2xl font-bold mb-4">Add New Role</h1>
+      <input
+        type="text"
+        placeholder="Title"
+        className="w-full px-4 py-2 border rounded"
+        value={form.title}
+        onChange={(e) => setForm({ ...form, title: e.target.value })}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Category"
+        className="w-full px-4 py-2 border rounded"
+        value={form.permission}
+        onChange={(e) => setForm({ ...form, permission: e.target.value })}
+        required
+      />
+      <button
+          type="button"
+          onClick={() => router.back()}
+          className="bg-gray-300 text-black px-6 py-2 rounded hover:bg-gray-400"
         >
-          + Add Role
-        </Link>
-      </div>
-
-      <table className="w-full table-auto border-collapse bg-gray-600 shadow-sm rounded">
-        <thead>
-          <tr className="bg-gray-800 text-left">
-            <th className="p-3">Title</th>
-            <th className="p-3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {roleList.map((role) => (
-            <tr key={role.id} className="border-t">
-              <td className="p-3">{role.title}</td>
-              <td className="p-3">{role.permission}</td>
-              <td className="p-3 space-x-2">
-                <Link
-                  href={`/admin/settings/roles/${role.id}/edit`}
-                  className="text-blue-600 hover:underline"
-                >
-                  Edit
-                </Link>
-                <button
-                  onClick={() => handleDelete(role.id)}
-                  className="text-red-600 hover:underline"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          Back
+        </button>
+      <button
+        type="submit"
+        className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+      >
+        Save Movie
+      </button>
+    </form>
   );
 }
