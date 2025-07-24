@@ -10,6 +10,7 @@ const navItems = [
   { href: '/admin/settings', label: 'Settings' },
 ];
 
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
