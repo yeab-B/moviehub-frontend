@@ -1,4 +1,3 @@
-// app/admin/movies/new/page.tsx
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -6,12 +5,13 @@ import { useState } from 'react';
 
 export default function AddMoviePage() {
   const router = useRouter();
-  const [form, setForm] = useState({ title: '', category: '', rating: '' });
+  const [form, setForm] = useState({ title: '', category: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // You'd send a POST request here
-    console.log('New movie:', form);
+    // System assigns rating later
+    const movieWithDefaultRating = { ...form, rating: '0.0' }; // or null
+    console.log('New movie:', movieWithDefaultRating);
     router.push('/admin/movies');
   };
 
@@ -32,15 +32,6 @@ export default function AddMoviePage() {
         className="w-full px-4 py-2 border rounded"
         value={form.category}
         onChange={(e) => setForm({ ...form, category: e.target.value })}
-        required
-      />
-      <input
-        type="number"
-        step="0.1"
-        placeholder="Rating"
-        className="w-full px-4 py-2 border rounded"
-        value={form.rating}
-        onChange={(e) => setForm({ ...form, rating: e.target.value })}
         required
       />
       <button
